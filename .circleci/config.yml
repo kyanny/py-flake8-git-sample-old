@@ -14,7 +14,8 @@ jobs:
             source ./venv/bin/activate
           name: venv
       - python/load-cache
-      - python/install-deps
+      - python/install-deps:
+          local: false
       - python/save-cache
       - run:
           command: flake8 .
