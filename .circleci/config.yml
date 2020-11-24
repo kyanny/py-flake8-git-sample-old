@@ -8,12 +8,14 @@ jobs:
     executor: python/default
     steps:
       - checkout
+      - run:
+          command: |
+            python -m venv venv
+            source ./venv/bin/activate
+          name: venv
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      - run:
-          command: pip install -r requirements.txt
-          name: pip
       - run:
           command: flake8 .
           name: flake8
